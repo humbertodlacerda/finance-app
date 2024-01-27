@@ -5,7 +5,7 @@ ARG user=humberto
 ARG uid=1000
 
 # Install sytem dependecies
-RUN apt-get update && apt-get Install -y \
+RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpng-dev \
