@@ -14,9 +14,7 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-ENV DEBIAN_FRONTEND=noninteractive
-
-RUN apt-get install supervisor
+RUN apt-get install -y supervisor
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
