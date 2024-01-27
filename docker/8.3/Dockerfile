@@ -5,7 +5,7 @@ ARG user=humberto
 ARG uid=1000
 
 # Install system dependencies
-RUN apt-get update && apt-get -y upgrade && apt-get install -y \
+RUN apt-get update && apt-get install -y \
     git \
     curl \
     libpng-dev \
@@ -13,6 +13,8 @@ RUN apt-get update && apt-get -y upgrade && apt-get install -y \
     libxml2-dev \
     zip \
     unzip
+
+RUN apt-get install supervisor
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
