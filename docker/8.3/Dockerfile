@@ -14,8 +14,6 @@ RUN apt-get update && apt-get install -y \
     zip \
     unzip
 
-RUN apt-get install -y supervisor
-
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -41,7 +39,6 @@ WORKDIR /var/www
 COPY start-container /usr/local/bin/start-container
 RUN chmod +x /usr/local/bin/start-container
 
-COPY supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
 EXPOSE 8000
