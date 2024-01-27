@@ -4,7 +4,7 @@ FROM php:8.3.2-fpm-bullseye
 ARG user=humberto
 ARG uid=1000
 
-# Install sytem dependecies
+# Install system dependencies
 RUN apt-get update && apt-get install -y \
     git \
     curl \
@@ -20,6 +20,10 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd sockets
+
+# Install Swoole
+RUN pecl install swoole
+RUN docker-php-ext-enable swoole
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -45,4 +49,4 @@ COPY php.ini /usr/local/etc/php/conf.d/custom.ini
 
 EXPOSE 8000
 
-ENTRYPOINT [ "start-container" ]
+ENTRYPOINT ["start-container"]
